@@ -77,6 +77,7 @@ module HRITestHelpers
     end
 
     def hri_post_tenant_stream(tenant_id, integrator_id, request_body, override_headers = {})
+      puts "POSTING TENANT STREAM WITH TENANT_ID: #{tenant_id} AND INTEGRATOR ID: #{integrator_id}"
       url = "#{@base_url}/tenants/#{tenant_id}/streams/#{integrator_id}"
       headers = { 'Accept' => 'application/json',
                   'Content-Type' => 'application/json',
