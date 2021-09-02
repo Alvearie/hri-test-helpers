@@ -12,10 +12,7 @@ module HRITestHelpers
               Repository: #{travis_build_dir.split('/').last},
               Branch: #{travis_branch},
               Time: #{Time.now.strftime("%m/%d/%Y %H:%M")},
-              Build Link: #{travis_job_web_url.gsub('https:///', 'https://travis.ibm.com/')}
-
-              For instructions on viewing test health on the UnitTH dashboard, consult the following README:
-              https://github.ibm.com/wffh-hri/dev-tools/blob/master/README.md#helm-deploy-for-unitth-test-dashboard"
+              Build Link: #{travis_job_web_url.gsub('https:///', 'https://travis.ibm.com/')}"
       }.to_json
       @request_helper.rest_post(@slack_url, message)
     end
