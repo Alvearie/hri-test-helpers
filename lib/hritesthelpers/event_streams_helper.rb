@@ -17,10 +17,8 @@ module HRITestHelpers
     end
 
     def delete_topic(topic)
-      if get_topics.include?(topic)
-        @request_helper.exec_command("ibmcloud es topic-delete #{topic} -f")
-        Logger.new(STDOUT).info("Topic #{topic} deleted.")
-      end
+      Logger.new(STDOUT).info("Deleting topic: #{topic}")
+      @request_helper.exec_command("ibmcloud es topic-delete #{topic} -f")
     end
 
     def get_groups
