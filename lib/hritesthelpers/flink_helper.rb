@@ -153,7 +153,8 @@ module HRITestHelpers
         while true
           response = get_job(job_id, { 'Authorization' => "Bearer #{token}" })
           raise "Failed to get Flink job with ID: #{job_id}" unless response.code == 200
-          break if JSON.parse(response.body)['state'] == state
+          response_body = JSON.parse(response.body)
+          break if response_body['state'] == state && response_body['vertices'].map { |v| v['status']}.select { |status| status != state}.empty?
         end
       end
       state == 'RUNNING' ? Logger.new(STDOUT).info("New Job Running With ID: #{job_id}") : Logger.new(STDOUT).info("Test Job ID #{@test_job_id} successfully canceled")
