@@ -149,7 +149,7 @@ module HRITestHelpers
     end
 
     def verify_job_state(job_id, token, state)
-      Timeout.timeout(20, nil, "The state of Flink job with ID: #{job_id} is not '#{state}'") do
+      Timeout.timeout(30, nil, "The state of Flink job with ID: #{job_id} is not '#{state}'") do
         while true
           response = get_job(job_id, { 'Authorization' => "Bearer #{token}" })
           raise "Failed to get Flink job with ID: #{job_id}" unless response.code == 200
