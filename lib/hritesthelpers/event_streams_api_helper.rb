@@ -7,6 +7,10 @@ module HRITestHelpers
       @headers = { 'X-Auth-Token': api_key }
     end
 
+    def get_topic(topic)
+      @request_helper.rest_get("#{@admin_url}/admin/topics/#{topic}", @headers)
+    end
+
     def get_topics
       response = @request_helper.rest_get("#{@admin_url}/admin/topics", @headers)
       raise 'Failed to get Event Streams topics' unless response.code == 200
@@ -27,6 +31,10 @@ module HRITestHelpers
         raise "Failed to delete Event Streams topic: #{topic}" unless response.code == 202
         Logger.new(STDOUT).info("Topic #{topic} deleted.")
       end
+    end
+
+    def delete_topic_no_verification(topic)
+      @request_helper.rest_delete("#{@admin_url}/admin/topics/#{topic}", nil, @headers)
     end
 
     def verify_topic_creation(expected_topics)
