@@ -68,27 +68,30 @@ module HRITestHelpers
       @request_helper.rest_delete(url, nil, headers, {})
     end
 
-    def hri_get_tenant_streams(tenant_id, override_headers = {})
+    def hri_get_tenant_streams(tenant_id, override_headers = {}, delete_auth = false)
       url = "#{@base_url}/tenants/#{tenant_id}/streams"
       headers = { 'Accept' => 'application/json',
                   'Content-Type' => 'application/json',
                   'Authorization' => "Bearer #{@iam_token}" }.merge(override_headers)
+      headers.delete('Authorization') if delete_auth
       @request_helper.rest_get(url, headers)
     end
 
-    def hri_post_tenant_stream(tenant_id, integrator_id, request_body, override_headers = {})
+    def hri_post_tenant_stream(tenant_id, integrator_id, request_body, override_headers = {}, delete_auth = false)
       url = "#{@base_url}/tenants/#{tenant_id}/streams/#{integrator_id}"
       headers = { 'Accept' => 'application/json',
                   'Content-Type' => 'application/json',
                   'Authorization' => "Bearer #{@iam_token}" }.merge(override_headers)
+      headers.delete('Authorization') if delete_auth
       @request_helper.rest_post(url, request_body, headers, {})
     end
 
-    def hri_delete_tenant_stream(tenant_id, integrator_id, override_headers = {})
+    def hri_delete_tenant_stream(tenant_id, integrator_id, override_headers = {}, delete_auth = false)
       url = "#{@base_url}/tenants/#{tenant_id}/streams/#{integrator_id}"
       headers = { 'Accept' => 'application/json',
                   'Content-Type' => 'application/json',
                   'Authorization' => "Bearer #{@iam_token}" }.merge(override_headers)
+      headers.delete('Authorization') if delete_auth
       @request_helper.rest_delete(url, nil, headers, {})
     end
 
