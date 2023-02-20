@@ -9,5 +9,3 @@ require_relative 'hritesthelpers/log_dna_helper'
 require_relative 'hritesthelpers/mgmt_api_helper'
 require_relative 'hritesthelpers/request_helper'
 require_relative 'hritesthelpers/slack_helper'
-require_relative 'hritesthelpers/azure_reusable_functions'
-

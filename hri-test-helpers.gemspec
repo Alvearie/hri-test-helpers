@@ -10,6 +10,6 @@ Gem::Specification.new do |gem|
   gem.authors = ['Fred Ricci']
   gem.email = 'fjricci@us.ibm.com'
   gem.homepage = 'https://github.com/Alvearie/hri-test-helpers'
-  gem.files = Dir['lib/**/*.rb'] + %w[hri-test-helpers.gemspec README.md]
-  gem.require_paths = ['lib']
+  gem.files = Dir['lib/**/*.rb'] + %w(hri-test-helpers.gemspec README.md)
+  gem.require_paths = ["lib"]
 end

@@ -100,18 +100,18 @@ module HRITestHelpers
       headers = { 'Accept' => 'application/json',
                   'Content-Type' => 'application/json' }.merge(override_headers)
       case request_type
-        when 'GET'
-          @request_helper.rest_get(url, headers)
-        when 'PUT'
-          @request_helper.rest_put(url, request_body, headers)
-        when 'POST'
-          headers['Authorization'] = "Bearer #{@iam_token}"
-          @request_helper.rest_post(url, request_body, headers)
-        when 'DELETE'
-          headers['Authorization'] = "Bearer #{@iam_token}"
-          @request_helper.rest_delete(url, nil, headers)
-        else
-          raise "Invalid request type: #{request_type}"
+      when 'GET'
+        @request_helper.rest_get(url, headers)
+      when 'PUT'
+        @request_helper.rest_put(url, request_body, headers)
+      when 'POST'
+        headers['Authorization'] = "Bearer #{@iam_token}"
+        @request_helper.rest_post(url, request_body, headers)
+      when 'DELETE'
+        headers['Authorization'] = "Bearer #{@iam_token}"
+        @request_helper.rest_delete(url, nil, headers)
+      else
+        raise "Invalid request type: #{request_type}"
       end
     end
 
